@@ -17,8 +17,8 @@ title: Hemsidan trials
 email: lotta.hardman@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A page to test background settings and flip-cards and how they work in iOS and other mobile units + browsers.
-baseurl: "/hemsidan" # the subpath of your site, e.g. /blog
-url: "wickstro.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "wickstro.github.io/hemsidan" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: wickstro
 github_username:  wickstro
 
