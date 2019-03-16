@@ -1,0 +1,55 @@
+<section class="produktkort">
+   <div class="container-fluid">
+     <div class="row">
+       <div class="col-md-12">
+         <p>This borrows from <a href="https://davidwalsh.name/css-flip">David Walsh's css-flip solution</a></p>
+         <p>In this version, cards can be variable heights</p>
+       </div>
+     </div>
+
+   </div>
+   <div class="container">
+
+       <div class="col-md-4">
+         <div class="flip-container" data-toggle="click" ontouchstart="this.classList.toggle('hover');">
+           <div class="flipper">
+             <div class="front">
+               <!-- front content -->
+               <div class="panel panel-default">
+                 <div class="panel-heading">
+                   <h2 class="panel-title">Card 3 Title Front</h2>
+                 </div>
+                 <div class="panel-body">
+                   <h1>No 24</h1>
+                    <p>Choko<br>Body Butter</p></div>
+                 <div class="panel-footer">Card 3 has more on the back</div>
+               </div> <!-- .panel -->
+             </div> <!-- .front -->
+             <div class="back">
+               <!-- back content -->
+               <div class="panel panel-default">
+                 <div class="panel-heading">
+                   <h2 class="panel-title">Card 3 Title Back</h2>
+                 </div>
+                    <div class="panel-body">
+                        <a href="/no24-cocoabodybutter">
+                          <img class="img-fluid mx-auto pb-3" src="/hemsidan/img/DrHardmans_No24_Cocoa_Body_Butter.png"
+                           alt="Dr Hardman No.24 cocoa body butter">
+                        </a>
+                    </div>
+                 <div class="panel-footer">Card 3 footer back</div>
+               </div> <!-- .panel -->
+             </div> <!-- .back -->
+           </div> <!-- .flipper -->
+         </div> <!-- .flip-container -->
+       </div> <!-- .col-md-4 -->
+</div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+(function($) {
+  $('.flip-container[data-toggle="click"]').on('click', function(e) {
+    $(this).toggleClass('flip');
+  });
+})(jQuery);
+</script>

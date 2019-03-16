@@ -89,3 +89,72 @@ body {
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
   }
+
+  /* SECOND APPROACH  https://davidwalsh.name/css-flip */
+
+
+
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  &.flip {
+    .back { transform: rotateY(0deg); }
+    .front { transform: rotateY(180deg); }
+  }
+}
+
+.flip-container, .front, .back {
+  // width: 320px;
+  height: auto;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  width: 200%;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  float: left;
+  width: 50%;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+}
+
+/*  UPDATED! front pane, placed above back */
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  position: relative;
+  background-color: grey;
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(-180deg);
+  margin-left: -50%;
+}
+
+/*
+  Some vertical flip updates
+*/
+.vertical {
+  &.flip-container {
+    position: relative;
+    &:hover {
+      .back { transform: rotateX(0deg); }
+      .front { transform: rotateX(180deg); }
+    }
+  }
+  .back { transform: rotateX(180deg); }
+}
