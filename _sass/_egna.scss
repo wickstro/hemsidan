@@ -1,4 +1,10 @@
-
+.bg {
+  background:  url(../img/bgs/woman.jpg) no-repeat center top fixed;
+  background-size: cover;
+  @media screen and (max-width 414){
+    background:  url(../img/bgs/vertical_woman.jpg) no-repeat center top fixed;
+  }
+}
 //* FLIP CARD STYLES *//
 
 .produktkort {
@@ -48,7 +54,7 @@
   -webkit-backface-visibility: hidden;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: all .8s ease-in-out;
-  transform: rotateX(0deg);
+  transform: rotateX(360deg);
   img {
     max-width: 200px;
   }
@@ -56,7 +62,7 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  -webkit-transform: rotateY(0deg);
+  -webkit-transform: rotateY(360deg);
   border-radius: 6px;
   h1 {
     color: white;
