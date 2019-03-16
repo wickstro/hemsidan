@@ -9,7 +9,7 @@
 
    </div>
    <div class="container">
-         <div class="flip-card" data-toggle="click" ontouchstart="this.classList.toggle('hover');">
+         <div class="flip-card" onclick="this.classList.toggle('hover');">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                    <!-- front content -->
@@ -28,12 +28,18 @@
          </div> <!-- .flip-card -->
 
     </div>
+    <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+    	<div class="flipper">
+    		<div class="front">
+    			<h1>No 24</h1>
+                 <p>Choko<br>Body Butter</p>
+    		</div>
+    		<div class="back">
+    			<a href="/no24-cocoabodybutter">
+                   <img class="img-fluid" src="/hemsidan/img/DrHardmans_No24_Cocoa_Body_Butter.png" alt="Dr Hardman No.24 cocoa body butter">
+                 </a>
+    		</div>
+    	</div>
+    </div>
 </section>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-(function($) {
-  $('.flip-card[data-toggle="click"]').on('click', function(e) {
-    $(this).toggleClass('flip');
-  });
-})(jQuery);
-</script>
+

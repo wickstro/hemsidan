@@ -1,12 +1,15 @@
 body {
   height: 100%;
+  position: relative;
 }
   .bg {
     height: 100%;
-    background:  url(../img/bgs/woman.jpg) no-repeat center top fixed;
+    position: absolute;
+    top: 0;
+    background:  url(../img/bgs/woman.jpg) no-repeat center top;
     background-size: cover;
     @media screen and (max-width 414){
-      background:  url(../img/bgs/vertical_woman.jpg) no-repeat center top fixed;
+      background:  url(../img/bgs/vertical_woman.jpg) no-repeat center top;
     }
   }
   //* FLIP CARD STYLES *//
@@ -30,14 +33,10 @@ body {
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     padding-bottom:20px;
     overflow: hidden;
-    &.flip {
-      .flip-card-back { transform: rotateY(0deg); }
-      .flip-card-front { transform: rotateY(180deg); }
-    }
   }
 
   /* This container is needed to position the front and back side */
-  .flip-card-inner, .flipper {
+  .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
@@ -50,12 +49,14 @@ body {
   }
 
   /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
+
+.flip-card.hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
 
   /* Position the front and back side */
-  .flip-card-front, .flip-card-back, .front, .back {
+  .flip-card-front, .flip-card-back {
     position: absolute;
     top: 0;
     left: 0;
@@ -75,7 +76,11 @@ body {
 
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
-    -webkit-transform: rotateY(360deg);
+    z-index: 2;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    position: relative;
+    background: grey;
     border-radius: 6px;
     h1 {
       color: white;
@@ -87,12 +92,6 @@ body {
       color: white;
     }
   }
-  .flip-card-front .front {
-    background-color: grey;
-    z-index: 2;
-    transform: rotateY(0deg);
-    position: relative;
-  }
 
   /* Style the back side */
   .flip-card-back {
@@ -101,3 +100,55 @@ body {
     -webkit-transform: rotateY(-180deg);
   }
 
+/* entire container, keeps perspective --------------------------- NEW STYLES*/
+.flip-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+/*  UPDATED! flip the pane when hovered */
+.flip-container:hover .back {
+  transform: rotateY(0deg);
+}
+.flip-container:hover .front {
+  transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+  width: 210px;
+  height: 210px;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  img {
+    max-width: 200px;
+  }
+}
+
+/*  UPDATED! front pane, placed above back */
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  background: grey;
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(-180deg);
+}
