@@ -3,13 +3,16 @@ body {
   position: relative;
 }
   .bg {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    background:  url(../img/bgs/woman.jpg) no-repeat center top;
     background-size: cover;
-    @media screen and (max-width 414){
-      background:  url(../img/bgs/vertical_woman.jpg) no-repeat center top;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image:  url(../img/bgs/woman.jpg);
+
+    @media only screen
+    and (min-device-width : 768px)
+    and (max-device-width : 1024px)  {
+      background-image:  url(../img/bgs/vertical_woman.jpg);
+      background-attachment: scroll;
     }
   }
   //* FLIP CARD STYLES *//
@@ -50,7 +53,7 @@ body {
 
   /* Do an horizontal flip when you move the mouse over the flip box container */
 
-.flip-card.hover .flip-card-inner {
+.flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
