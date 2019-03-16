@@ -29,18 +29,23 @@ body {
     height: 210px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
     padding-bottom:20px;
+    overflow: hidden;
+    &.flip {
+      .flip-card-back { transform: rotateY(0deg); }
+      .flip-card-front { transform: rotateY(180deg); }
+    }
   }
 
   /* This container is needed to position the front and back side */
-  .flip-card-inner {
+  .flip-card-inner, .flipper {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
-    -webkit-transition: transform 0.8s;
-    -moz-transition: transform 0.8s;
-    -o-transition: transform 0.8s;
-    transition: transform 0.8s;
+    -webkit-transition: 0.8s;
+    -moz-transition: 0.8s;
+    -o-transition: 0.8s;
+    transition: 0.8s;
     transform-style: preserve-3d;
   }
 
@@ -50,15 +55,19 @@ body {
   }
 
   /* Position the front and back side */
-  .flip-card-front, .flip-card-back {
+  .flip-card-front, .flip-card-back, .front, .back {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
-    -webkit-transition: all .8s ease-in-out;
-    transform: rotateX(360deg);
+    -webkit-transition: 0.8s;
+    transition: 0.8s;
+
     img {
       max-width: 200px;
     }
@@ -78,83 +87,17 @@ body {
       color: white;
     }
   }
-  .flip-card-front {
+  .flip-card-front .front {
     background-color: grey;
+    z-index: 2;
+    transform: rotateY(0deg);
+    position: relative;
   }
 
   /* Style the back side */
   .flip-card-back {
-    background-color: unset;
     color: white;
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
+    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
   }
 
-  /* SECOND APPROACH  https://davidwalsh.name/css-flip */
-
-
-
-/* entire container, keeps perspective */
-.flip-container {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  overflow: hidden;
-  &.flip {
-    .back { transform: rotateY(0deg); }
-    .front { transform: rotateY(180deg); }
-  }
-}
-
-.flip-container, .front, .back {
-  // width: 320px;
-  height: auto;
-}
-
-/* flip speed goes here */
-.flipper {
-  transition: 0.6s;
-  transform-style: preserve-3d;
-  width: 200%;
-  position: relative;
-}
-
-/* hide back of pane during swap */
-.front, .back {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transition: 0.6s;
-  transform-style: preserve-3d;
-  float: left;
-  width: 50%;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-}
-
-/*  UPDATED! front pane, placed above back */
-.front {
-  z-index: 2;
-  transform: rotateY(0deg);
-  position: relative;
-  background-color: grey;
-}
-
-/* back, initially hidden pane */
-.back {
-  transform: rotateY(-180deg);
-  margin-left: -50%;
-}
-
-/*
-  Some vertical flip updates
-*/
-.vertical {
-  &.flip-container {
-    position: relative;
-    &:hover {
-      .back { transform: rotateX(0deg); }
-      .front { transform: rotateX(180deg); }
-    }
-  }
-  .back { transform: rotateX(180deg); }
-}
